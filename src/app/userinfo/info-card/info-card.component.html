@@ -13,7 +13,7 @@
   <div class="title">
     <p>{{ title() }}</p>
     @if(!isProfile()){ @if(!isEditing){
-    <button type="button" (click)="onCancle()">Edit</button>
+    <button type="button" (click)="toggleEditing()">Edit</button>
     }@else {
     <div class="two-button">
       <button type="submit" class="confirm">Submit</button>
@@ -24,33 +24,31 @@
   <div class="form-rows">
     <input
       type="text"
-      [placeholder]="firstDisplay()"
       [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
-      [formControl]="form.controls.firstLine"
+      formControlName="firstLine"
     />
     <input
       type="text"
-      [placeholder]="secondDisplay()"
       [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
-      [formControl]="form.controls.secondLine"
+      formControlName="secondLine"
     />
   </div>
   <div class="form-rows">
     <input
       type="text"
-      [placeholder]="thirdDisplay()"
       [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
-      [formControl]="form.controls.thirdLine"
+      formControlName="thirdLine"
     />
     <input
       type="text"
-      [placeholder]="forthDisplay()"
       [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
-      [formControl]="form.controls.forthLine"
+      formControlName="forthLine"
     />
   </div>
   @if(isProfile()){ @if(!isEditing){
-  <button type="button" class="big-button" (click)="onCancle()">Edit</button>
+  <button type="button" class="big-button" (click)="toggleEditing()">
+    Edit
+  </button>
   } @else {
   <div class="two-button center">
     <button type="submit" class="big-button confirm">Submit</button>

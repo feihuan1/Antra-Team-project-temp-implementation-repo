@@ -4,7 +4,7 @@ export const DUMMY_DATA = {
         lastName: 'Peng',
         email: 'peng123@gmail.com',
         phone: '702-213-2313',
-        profileImage: 'https://images.squarespace-cdn.com/content/v1/5ec689480cc22c2d441e152f/9bea03a3-1bdf-4edb-acae-024af66c3bc2/NLalorPhotography-2023-07-02-Isabella-Headshot-WebSized-1.jpg?format=500w'
+        profileImage: 'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'
     },
     shippingAddress:{
         street: '123 main st',

@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, output, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, OnChanges, OnInit, output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CardFormData } from '../userinfo.model';
 
@@ -8,7 +8,8 @@ import { CardFormData } from '../userinfo.model';
   templateUrl: './info-card.component.html',
   styleUrl: './info-card.component.css',
 })
-export class InfoCardComponent {
+export class InfoCardComponent implements OnChanges {
+  
   isProfile = input.required<boolean>();
   title = input.required<string | null>();
   image = input.required<string | null | undefined>();
@@ -25,13 +26,23 @@ export class InfoCardComponent {
 
   isEditing = false;
 
+  ngOnChanges(): void {
+    this.resetForm()
+  }
+
   form = new FormGroup({
     firstLine: new FormControl({ value: '', disabled: !this.isEditing }),
     secondLine: new FormControl({ value: '', disabled: !this.isEditing }),
     thirdLine: new FormControl({ value: '', disabled: !this.isEditing }),
     forthLine: new FormControl({ value: '', disabled: !this.isEditing }),
-
   });
+
+  resetForm(){
+    this.form.get('firstLine')?.setValue(this.firstDisplay())
+    this.form.get('secondLine')?.setValue(this.secondDisplay())
+    this.form.get('thirdLine')?.setValue(this.thirdDisplay())
+    this.form.get('forthLine')?.setValue(this.firstDisplay())
+  }
 
   toggleEditing() {
     this.isEditing = !this.isEditing;
@@ -58,7 +69,7 @@ export class InfoCardComponent {
 
   onCancle() {
     this.toggleEditing();
-    this.form.reset();
+    this.resetForm();
   }
 
   onSubmit() {
@@ -78,6 +89,6 @@ export class InfoCardComponent {
         : this.forthDisplay(),
     });
 
-    this.form.reset();
+    this.resetForm()
   }
 }

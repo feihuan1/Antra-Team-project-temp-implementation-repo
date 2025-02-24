@@ -16,6 +16,6 @@ export class OrderCardComponent {
      orderId = input.required<string|null>() // find the order detail page
 
      onReview(){
-      window.alert("Nevigating to product detail page and scrol to the review section then focus on the review textare")
+      window.alert("Nevigating to product detail page and scrol to the review section then focus cursor to the review textarea")
      }
 }
